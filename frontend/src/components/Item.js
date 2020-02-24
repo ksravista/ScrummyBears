@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import RemoveIcon from "@material-ui/icons/Remove";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Button from "@material-ui/core/Button/Button";
+import Box from '@material-ui/core/Box';
 
 export default class Item extends React.Component {
 
@@ -25,17 +26,20 @@ export default class Item extends React.Component {
 
         return (
 
-            <Card>
-                <CardContent>
-                    <Typography variant="h5" component="h2">
-                        {this.state.title}
-                    </Typography>
-                    {this.state.description}
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card>
+
+            <Box m={5}>
+                <Card>
+                    <CardContent>
+                        <Typography variant="h5" component="h2">
+                            {this.state.title}
+                        </Typography>
+                        {this.state.description}
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small">Add More</Button>
+                    </CardActions>
+                </Card>
+            </Box>
         );
     }
 }

@@ -1,14 +1,20 @@
 import React from 'react';
 import Item from './components/Item';
 
+
 import './App.css';
 import Container from "@material-ui/core/Container/Container";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Toolbar from "@material-ui/core/Toolbar/Toolbar";
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import Typography from "@material-ui/core/Typography/Typography";
 
 class App extends React.Component{
 
 
     constructor(props){
         super(props);
+        this.state ={items:[]};
 
     }
     componentDidMount(){
@@ -25,22 +31,39 @@ class App extends React.Component{
 
 
     render() {
+        return(
+        <Container maxWidth={"md"}r>
+            <AppBar position="static" style={{marginBottom:"20px" }} >
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
+                    </IconButton>
+                    <Typography variant="h6" >
+                        Cart
+                    </Typography>
+                </Toolbar>
+            </AppBar>
 
-        if(this.state) {
-            return (
 
 
-                <Container component="main">
+            <Container component="main">
 
-                    {this.state.items.map(item => {
+            {this.state.items.map(item => {
 
-                        return (<Item title={item.title} description={item.description} price={item.price}/>);
-                    })}
-                </Container>
-            );
-        }
+                return (<Item m={10} title={item.title} description={item.description} price={item.price}/>);
+            })}
+        </Container>
+        </Container>
 
-        return (<div></div>);
+
+
+
+
+
+
+
+    )
+
+
     }
 }
 
