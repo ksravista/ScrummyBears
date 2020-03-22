@@ -7,6 +7,7 @@ public class Item {
 
     private Long cartId;
     private String name, description;
+    private String itemId;
     private Integer quantity;
     private Double price;
 
@@ -21,7 +22,16 @@ public class Item {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
+        this.itemId = System.currentTimeMillis()+"";
 
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public Integer getQuantity() {
@@ -65,6 +75,9 @@ public class Item {
     }
 
 
+    @Override
+    public String toString() {
 
-
+        return name + " " + description + " " + quantity;
+    }
 }
