@@ -15,14 +15,12 @@ public class CartRestController {
     @Autowired
     FirebaseService firebaseService;
 
-    @RequestMapping("/")
-    public String main(Model model) {
-        model.addAttribute("message", "messafe");
-        return "index"; //view
-    }
 
     @PostMapping(path = "/add")
     public ResponseEntity postItem(@RequestBody Item item) throws ExecutionException, InterruptedException {
+
+        //add to orders
+        //call avis orders
 
         item.setItemId(System.currentTimeMillis()+"");
         item.setQuantity(1);
@@ -30,37 +28,25 @@ public class CartRestController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping(path="/increment")
-    public ResponseEntity increment(@RequestBody Item item) throws ExecutionException, InterruptedException {
 
-        item.setQuantity(item.getQuantity()+1);
+    //    // /hello?name=kotlin
+    @GetMapping("/delete/{cartID}/{itemID}")
+    public String delete(@PathVariable String itemID, @PathVariable String cartID, Model model) throws ExecutionException, InterruptedException {
 
-        firebaseService.deleteItem(item);
-        firebaseService.saveItem(item);
-
-        return ResponseEntity.ok().build();
+        //delete from orders
+        firebaseService.deleteItem(itemID);
+        List<Item> list = firebaseService.getItemById(Integer.parseInt(cartID));
+        model.addAttribute("items", list);
+        return "index";
     }
 
-    @PutMapping(path="/decrement")
-    public ResponseEntity decrement(@RequestBody Item item) throws ExecutionException, InterruptedException {
-
-        item.setQuantity(item.getQuantity()-1);
-
-        firebaseService.deleteItem(item);
-        firebaseService.saveItem(item);
-
-        return ResponseEntity.ok().build();
-    }
-
-
-//    // /hello?name=kotlin
-    @GetMapping("/cart")
+//   /?cartID=id
+    @GetMapping("/")
     public String mainWithParam(
             @RequestParam(name = "cartID", required = true, defaultValue = "")
                     String id, Model model) throws ExecutionException, InterruptedException {
 
         model.addAttribute("message", id);
-
         List<Item> list = firebaseService.getItemById(Integer.parseInt(id));
         model.addAttribute("items", list);
         return "index";

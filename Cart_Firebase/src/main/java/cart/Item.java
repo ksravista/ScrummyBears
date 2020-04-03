@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Item {
 
-    private Long cartId;
-    private String name, description;
+    private Long cartID;
+    private String title, description;
     private String itemId;
     private Integer quantity;
     private Double price;
@@ -15,10 +15,10 @@ public class Item {
         super();
     }
 
-    public Item(Long cartId, String name, String description, Integer quantity, Double price){
+    public Item(Long cartID, String title, String description, Integer quantity, Double price){
 
-        this.cartId = cartId;
-        this.name = name;
+        this.cartID = cartID;
+        this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
@@ -42,12 +42,12 @@ public class Item {
         return price;
     }
 
-    public Long getCartId() {
-        return cartId;
+    public Long getCartID() {
+        return cartID;
     }
 
-    public void setCartId(Long cartId) {
-        this.cartId = cartId;
+    public void setCartID(Long cartID) {
+        this.cartID = cartID;
     }
 
     public void setQuantity(Integer quantity) {
@@ -58,12 +58,12 @@ public class Item {
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -78,6 +78,6 @@ public class Item {
     @Override
     public String toString() {
 
-        return name + " " + description + " " + quantity;
+        return title + " " + description + " " + quantity;
     }
 }

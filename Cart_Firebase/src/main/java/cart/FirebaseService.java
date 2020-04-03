@@ -22,11 +22,13 @@ public class FirebaseService {
 
     }
 
-    public List<Item> getItemById(int id) throws ExecutionException, InterruptedException {
+    public List<Item> getItemById(long id) throws ExecutionException, InterruptedException {
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
         CollectionReference items = dbFirestore.collection("items");
-        Query query = items.whereEqualTo("cartId", id);
+
+
+        Query query = items.whereEqualTo("cartID", (int)id);
 
         ApiFuture<QuerySnapshot> querySnapshot = query.get();
 
@@ -38,11 +40,11 @@ public class FirebaseService {
         return list;
     }
 
-    public String deleteItem(Item item) throws ExecutionException, InterruptedException {
+    public String deleteItem(String id) throws ExecutionException, InterruptedException {
 
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> writeResult = dbFirestore.collection("items").document(item.getItemId()).delete();
+        ApiFuture<WriteResult> writeResult = dbFirestore.collection("items").document(id).delete();
         return writeResult.get().getUpdateTime().toString();
 
 
