@@ -13,7 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Cart</name>
 	<description>Cart Microservice</description>
-
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -58,6 +57,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 		</plugins>
 	</build>
 
