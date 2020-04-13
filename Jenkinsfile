@@ -1,7 +1,4 @@
 node {
-    stage('SCM Checkout'){
-        git credentialsId: 'jenkins', url: 'https://ksravista@bitbucket.org/scrummybearsgroup/cart.git'
-    }
     stage('mvn package'){
         
         def mvnHome = tool name: 'maven-3', type: 'maven'
