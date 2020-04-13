@@ -171,7 +171,38 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.CartApplicationTests.testService">
+    <configuration name="CartApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cart" />
+      <option name="MAIN_CLASS_NAME" value="cart.CartApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartApplicationTests.testService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cart" />
+      <option name="MAIN_CLASS_NAME" value="cart.CartApplicationTests" />
+      <option name="METHOD_NAME" value="testService" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="cart" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cart.CartApplication" />
@@ -179,6 +210,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CartApplicationTests.testService" />
+        <item itemvalue="JUnit.CartApplicationTests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
