@@ -14,7 +14,6 @@ node {
         sh  "${mvnCMD} test"
     }
     stage('docker build image'){
-        
         sh 'docker build -t swe699cart .'
     }
     
