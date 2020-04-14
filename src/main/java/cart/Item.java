@@ -7,7 +7,7 @@ public class Item {
 
     private Long cartID;
     private String title, description;
-    private String itemId;
+    private Long itemId;
     private Integer quantity;
     private Double price;
 
@@ -22,15 +22,15 @@ public class Item {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.itemId = System.currentTimeMillis()+"";
+        this.itemId = System.currentTimeMillis();
 
     }
 
-    public String getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 

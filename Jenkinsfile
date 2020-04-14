@@ -10,6 +10,11 @@ node {
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh  "${mvnCMD} test"
     }
+    stage ('sonarcube code analysis (acceptance testing)'){
+
+
+
+    }
     stage('docker build image'){
         sh 'docker build -t swe699cart .'
     }
