@@ -27,10 +27,10 @@ public class CartRestController {
         item.setItemId(System.currentTimeMillis());
         item.setQuantity(1);
         firebaseService.saveItem(item);
-
         //adding to avis
-//        RestTemplate restTemplate = new RestTemplate();
-//        restTemplate.postForObject("http://34.229.53.170:8081/cartSummary", item, Item.class);
+
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForObject("http://34.229.53.170:8081/cartSummary", item, Item.class);
 
         return ResponseEntity.ok().build();
     }
