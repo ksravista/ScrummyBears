@@ -22,8 +22,6 @@ public class CartRestController {
     public ResponseEntity postItem(@RequestBody Item item) throws ExecutionException, InterruptedException {
 
         //add to orders
-
-
         item.setItemId(System.currentTimeMillis());
         item.setQuantity(1);
         firebaseService.saveItem(item);

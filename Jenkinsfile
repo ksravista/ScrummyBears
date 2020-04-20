@@ -10,11 +10,12 @@ node {
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh  "${mvnCMD} test"
     }
-    stage ('sonarcube code analysis (acceptance testing)'){
-
-
-
-    }
+    stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'maven-3', type: 'maven'
+        withSonarQubeEnv('sonarqube') {
+            sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+     }
     stage('docker build image'){
         sh 'docker build -t swe699cart .'
     }
