@@ -17,7 +17,6 @@ public class FirebaseService {
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("items").document(item.getItemId()+"").set(item);
-
         return collectionApiFuture.get().getUpdateTime().toString();
 
     }
