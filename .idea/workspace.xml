@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e59730cb-3069-4406-8e3c-c13a476a5799" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/cart/FirebaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cart/FirebaseService.java" afterDir="false" />
-    </list>
+    <list default="true" id="e59730cb-3069-4406-8e3c-c13a476a5799" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +114,7 @@
       <workItem from="1587175081541" duration="132000" />
       <workItem from="1587234047941" duration="2533000" />
       <workItem from="1587349578234" duration="1218000" />
-      <workItem from="1587496669541" duration="4842000" />
+      <workItem from="1587496669541" duration="5065000" />
     </task>
     <servers />
   </component>
