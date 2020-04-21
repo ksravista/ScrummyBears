@@ -14,7 +14,6 @@ public class FirebaseService {
 
 
     public String saveItem(Item item) throws ExecutionException, InterruptedException {
-
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("items").document(item.getItemId()+"").set(item);
         return collectionApiFuture.get().getUpdateTime().toString();
