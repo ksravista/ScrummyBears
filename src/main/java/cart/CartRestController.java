@@ -40,13 +40,20 @@ public class CartRestController {
 
         //delete from orders from avi
 
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://34.229.53.170:8081/deleteItem/" + itemID);
+        boolean problem = false;
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.delete("http://34.229.53.170:8081/deleteItem/" + itemID);
+        }catch(Exception e){
+            problem = true;
+        }
 
-
-        firebaseService.deleteItem(itemID);
-        List<Item> list = firebaseService.getItemById(Integer.parseInt(cartID));
-        model.addAttribute("items", list);
+        //delete from own only if there is no exception from Orders microservice
+        if(!problem) {
+            firebaseService.deleteItem(itemID);
+            List<Item> list = firebaseService.getItemById(Integer.parseInt(cartID));
+            model.addAttribute("items", list);
+        }
         return "index";
     }
 

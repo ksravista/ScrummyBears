@@ -1,4 +1,6 @@
 node {
+
+
     stage('mvn package'){
         
         def mvnHome = tool name: 'maven-3', type: 'maven'
@@ -12,12 +14,16 @@ node {
     }
     stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3', type: 'maven'
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('jenkins-latest') {
             sh "${mvnHome}/bin/mvn sonar:sonar"
         }
      }
     stage('docker build image'){
         sh 'docker build -t swe699cart .'
     }
+
+    stage('docker push image to docker hub'){
+            sh 'docker build -t swe699cart .'
+        }
     
 }
