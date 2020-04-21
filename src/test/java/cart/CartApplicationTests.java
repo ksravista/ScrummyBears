@@ -11,7 +11,6 @@ class CartApplicationTests {
 
 	@Autowired
 	FirebaseService firebaseService;
-
 	@Test
 	void contextLoads() {
 	}
