@@ -22,7 +22,6 @@
 			**/CartApplication.java,
 			**/FirebaseInitialize.java
 		</sonar.exclusions>
-
 	</properties>
 
 	<dependencies>
