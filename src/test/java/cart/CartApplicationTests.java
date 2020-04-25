@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CartApplicationTests {
@@ -19,7 +19,7 @@ class CartApplicationTests {
 	}
 
 	@Test
-	void testService(){
+	void testService() throws ExecutionException, InterruptedException {
 
 		try {
 			firebaseService.saveItem(new Item(656357L, "title","description", 1, 8.0));
@@ -30,6 +30,9 @@ class CartApplicationTests {
 			e.printStackTrace();
 		}
 
+		List<Item> list = firebaseService.getItemById(656357L);
+		Item item = list.get(0);
+		assertEquals("title", item.getTitle());
 		assertTrue(true);
 
 

@@ -19,8 +19,7 @@
 		<sonar.exclusions>
 			**/CartRestController.java,
 			**/Item.java,
-			**/FirebaseService.java,
-			**/FirebaseInitialize.java
+			**/FirebaseService.java
 		</sonar.exclusions>
 	</properties>
 
