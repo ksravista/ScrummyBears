@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class FirebaseService {
+public class FirebaseModel {
 
 
     public String saveItem(Item item) throws ExecutionException, InterruptedException {

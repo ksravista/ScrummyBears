@@ -22,15 +22,15 @@ node{
         }
     }
     stage("Quality Gate"){
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
-              }
-          }
-         }
+
+    }
     stage('docker build image'){
         sh 'docker build -t swe699cart .'
+    }
+    stage('push image to docker hub'){
+		withDockerRegistry([credentialsId: "docker", url: "" ]) {
+		    sh 'docker push ksravista/swe699cart:latest'
+		}
     }
 
 }

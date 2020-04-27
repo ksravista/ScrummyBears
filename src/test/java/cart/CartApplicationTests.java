@@ -13,16 +13,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class CartApplicationTests {
 
 	@Autowired
-	FirebaseService firebaseService;
+	FirebaseModel firebaseModel;
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
-	void testService() throws ExecutionException, InterruptedException {
+	void testSaveService() throws ExecutionException, InterruptedException {
 
 		try {
-			firebaseService.saveItem(new Item(656357L, "title","description", 1, 8.0));
+			firebaseModel.saveItem(new Item(656357L, "title","description", 1, 8.0));
 		} catch (ExecutionException e) {
 			assertTrue(false);
 			e.printStackTrace();
@@ -30,12 +30,44 @@ class CartApplicationTests {
 			e.printStackTrace();
 		}
 
-		List<Item> list = firebaseService.getItemById(656357L);
+		List<Item> list = firebaseModel.getItemById(656357L);
 		Item item = list.get(0);
 		assertEquals("title", item.getTitle());
-		assertTrue(true);
+		assertEquals("description", item.getDescription());
+		assertEquals(1, item.getQuantity());
+
+	}
+
+	@Test
+	void testDelete() throws ExecutionException, InterruptedException {
+
+		Item item = new Item(656357L, "title","description", 1, 8.0);
+		try {
+
+			firebaseModel.saveItem(item);
+			List<Item> list = firebaseModel.getItemById(656357L);
+			firebaseModel.deleteItem(item.getItemId()+"");
+
+			List<Item> newList = firebaseModel.getItemById(656357L);
+			assertNotEquals(newList.size(), list.size());
+
+
+		} catch (ExecutionException e) {
+			assertTrue(false);
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+
+
+
+
 
 
 	}
+
+
+
 
 }

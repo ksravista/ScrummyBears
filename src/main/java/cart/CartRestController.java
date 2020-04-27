@@ -1,6 +1,5 @@
 package cart;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 public class CartRestController {
 
     @Autowired
-    FirebaseService firebaseService;
+    FirebaseModel firebaseModel;
 
 
     @PostMapping(path = "/add")
@@ -24,47 +23,44 @@ public class CartRestController {
         //add to orders
         item.setItemId(System.currentTimeMillis());
         item.setQuantity(1);
-        firebaseService.saveItem(item);
-        //adding to avis
+        firebaseModel.saveItem(item);
 
+        //POST to Orders service
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject("http://34.229.53.170:8081/cartSummary", item, Item.class);
 
         return ResponseEntity.ok().build();
     }
 
-
-    //    // /hello?name=kotlin
     @GetMapping("/delete/{cartID}/{itemID}")
-    public String delete(@PathVariable String itemID, @PathVariable String cartID, Model model) throws ExecutionException, InterruptedException {
-
-        //delete from orders from avi
-
+    public String delete(@PathVariable String itemID, @PathVariable String cartID, Model model)
+            throws ExecutionException, InterruptedException {
         boolean problem = false;
         try {
+
+            //DELETE from Orders Service.
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.delete("http://34.229.53.170:8081/deleteItem/" + itemID);
         }catch(Exception e){
             problem = true;
         }
-
-        //delete from own only if there is no exception from Orders microservice
+        //delete from own only if there is 200 response from the Orders Service
         if(!problem) {
-            firebaseService.deleteItem(itemID);
-            List<Item> list = firebaseService.getItemById(Integer.parseInt(cartID));
+            firebaseModel.deleteItem(itemID);
+            List<Item> list = firebaseModel.getItemById(Integer.parseInt(cartID));
             model.addAttribute("items", list);
         }
         return "index";
     }
 
-//   /?cartID=id
+
     @GetMapping("/")
     public String mainWithParam(
             @RequestParam(name = "cartID", required = true, defaultValue = "")
                     String id, Model model) throws ExecutionException, InterruptedException {
 
         model.addAttribute("message", id);
-        List<Item> list = firebaseService.getItemById(Integer.parseInt(id));
+        List<Item> list = firebaseModel.getItemById(Integer.parseInt(id));
         model.addAttribute("items", list);
         return "index";
     }
